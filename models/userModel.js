@@ -2,7 +2,7 @@
 const mongoose = require("../db/connection");
 
 // should i be requiring the user here?
-userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   phoneNumber: Number,
@@ -11,3 +11,5 @@ userSchema = new mongoose.Schema({
   interests: Array,
   password: String
 });
+
+module.exports = mongoose.model("User", UserSchema);

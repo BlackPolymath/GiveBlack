@@ -10,4 +10,4 @@ GiveSchema = new mongoose.Schema({
   amount: Number
 });
 
-module.exports = mongoose.model("Give", Give);
+module.exports = mongoose.model("Give", GiveSchema;
