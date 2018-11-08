@@ -5,8 +5,8 @@ const mongoose = require("../db/connection");
 // what else can i include here for payment type?
 GiveSchema = new mongoose.Schema({
   typeOfPayment: String,
-  user: String,
-  fund: String,
+  user: String, // ref
+  fund: String, // ref
   amount: Number
 });
 
