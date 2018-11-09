@@ -3,11 +3,11 @@ const mongoose = require("../db/connection");
 
 // should i be requiring the user here?
 // what else can i include here for payment type?
-GiveSchema = new mongoose.Schema({
+const GiveSchema = new mongoose.Schema({
   typeOfPayment: String,
   user: String, // ref
   fund: String, // ref
   amount: Number
 });
 
-module.exports = mongoose.model("Give", GiveSchema;
+module.exports = mongoose.model("Give", GiveSchema);
