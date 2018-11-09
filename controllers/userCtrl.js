@@ -10,10 +10,14 @@ router.get("/", (req, res) => {
   res.send("this is a test route");
 });
 
-// GET request/Sign Up => route is to signup.hbs
-router.get("/signup", (req, res) => {
-  res.render("signup");
+// Get login
+router.get("/login", (req, res) => {
+  res.render("login.hbs");
 });
 
-// GET request for for, to login & verify authentication
+// GET request/Sign Up => route is to signup.hbs
+router.get("/signup", (req, res) => {
+  res.render("signup.hbs");
+});
+
 module.exports = router;
