@@ -5,16 +5,31 @@ const org = require("../models/orgModel");
 // is this needed?
 const user = require("../models/userModel");
 
-// test route
+// homepage
 router.get("/", (req, res) => {
-  res.send("this is a test route");
+  res.render("index");
 });
 
-// Get login
-router.get("/login", (req, res) => {
-  res.render("login.hbs");
+// Get SignUp/create user
+router.get("/signup", (req, res) => {
+  res.render("signup.hbs");
 });
-// Post login
+// Post SignUp/ create user
+router.post("/signup", (req, res) => {
+  user
+    .create({
+      emailuserName: req.body.emailuserName,
+      password: req.body.password
+    })
+    .then(user => {
+      res.redirect("/");
+    });
+});
+// GET Login
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+// Post Login
 router.post("/login", (req, res) => {
   user
     .create({
@@ -25,10 +40,5 @@ router.post("/login", (req, res) => {
       res.redirect("/");
     });
 });
-
-// GET request/Sign Up => route is to signup.hbs
-// router.get("/signup", (req, res) => {
-//   res.render("signup.hbs");
-// });
-
+// GET logout
 module.exports = router;
