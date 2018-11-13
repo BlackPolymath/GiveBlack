@@ -5,10 +5,8 @@ const mongoose = require("../db/connection");
 const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  phoneNumber: Number,
   email: String,
   authenticated: Boolean,
-  interests: Array,
   password: String
 });
 

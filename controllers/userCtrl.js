@@ -38,12 +38,25 @@ router.post("/login", (req, res) => {
       email: req.body.email
     })
     .then(user => {
-      res.redirect("/");
+      res.redirect("/profile");
     });
-  /*
+});
+
+// Get profile form
+router.get("/profile", (req, res) => {
+  res.render("profile");
+});
+
+// Post profile
+router.post("/signup", (req, res) => {
+  user
+    .create({
+      email: req.body.email,
+      password: req.body.password
+    })
     .then(user => {
       res.redirect("/");
-    })*/
+    });
 });
 // GET logout
 module.exports = router;
