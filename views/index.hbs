@@ -1,3 +1,28 @@
-{{#if message}}
-<div class="alert alert-danger">{{message}}</div>
-{{/if}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>GiveBlack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav>
+            <div class="navbar">
+                <a href="/" class="app name ">GiveBlack</a>
+                <ul class="left">
+                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {{{ body }}}
+    </main>
+</body>
+
+</html>

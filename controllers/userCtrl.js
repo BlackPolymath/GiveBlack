@@ -30,6 +30,7 @@ router.post("/signup", (req, res) => {
 router.get("/login", (req, res) => {
   res.render("login");
 });
+
 // Post Login
 router.post("/login", (req, res) => {
   user
@@ -39,6 +40,10 @@ router.post("/login", (req, res) => {
     .then(user => {
       res.redirect("/");
     });
+  /*
+    .then(user => {
+      res.redirect("/");
+    })*/
 });
 // GET logout
 module.exports = router;
