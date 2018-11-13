@@ -47,12 +47,22 @@ router.post("/login", (req, res) => {
 // Get specific user profile after log In
 router.get("/profile/:id", (req, res) => {
   UserModel.findOne({ _id: req.params.id }).then(user => {
-    res.render("profile", user);
+    //res.render("showprofile", user);
+    res.render("updateprofile", user);
   });
   //use findone again to get user specific data
   //consider where the user id comes in  and use the user id in the find one
   //when you get the users data pass it to the view for profile
   //work in the profile view to render that data
+});
+
+// update user profile using form
+router.put("/update/:id", (req, res) => {
+  UserModel.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    new: true
+  }).then(todo => {
+    res.redirect("/profile/:id" + UserModel.id);
+  });
 });
 
 // Get sign up form
