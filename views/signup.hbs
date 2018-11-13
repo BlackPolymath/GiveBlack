@@ -1,34 +1,24 @@
-<h2>Sign Up</h2>
-
-{{!-- {{#if message}}
-<div class="alert alert-danger">{{message}}</div>
-{{/if}} --}}
-
-<form action="/signup" method="POST" class="auth-form">
-
-    <p class="input-field">
-        <input type="email" name="email" placeholder="Email">
-    </p>
-    <p class="input-field">
-        <input type="password" name="password" placeholder="Password">
-    </p>
-    <p class="input-field">
-        <input type="submit" value="Sign Up" class="btn">
-    </p>
+<h2>Sign Up to Give Black</h2>
 
 
-</form>
 
-{{!-- <form method="post" action="/signup">
+<form method="post" action="/signup">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input class="form-control" type="text" name="firstName" id="firstName">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" name="lastName" id="lastName">
+    </div>
+
     <div class="form-group">
         <label for="email">Email</label>
-        <input class="form-control" type="text" name="email" id="email">
+        <input class="form-control" type="email" name="email" id="email">
     </div>
-
     <div class="form-group">
-        <label for="email">Password</label>
+        <label for="password">Password</label>
         <input class="form-control" type="password" name="password" id="password">
     </div>
-
     <input class="btn btn-default" type="submit">
-</form> --}}
+</form>

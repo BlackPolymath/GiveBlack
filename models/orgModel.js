@@ -5,7 +5,6 @@ const mongoose = require("../db/connection");
 const OrgSchema = new mongoose.Schema({
   name: String,
   mission: String,
-  fund: String, //ref
   url: String
   // do i need to ref: user here?
 });

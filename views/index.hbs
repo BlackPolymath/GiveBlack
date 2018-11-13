@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+{{!-- change the name of this file to layout --}}
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -9,16 +11,18 @@
 </head>
 
 <body>
-    <header class="site-header">
+    <header>
         <nav>
             <div class="navbar">
-                <a href="/" class="app name ">GiveBlack</a>
-                <ul class="left">
-                    <li><a href="/login">Log In</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                </ul>
+                <a href="/">GiveBlack</a>
             </div>
         </nav>
+        <p>
+            <div class="homepage">
+                <a href="/login">Log In</a>
+                <a href="/signup">Sign Up</a>
+            </div>
+        </p>
     </header>
     <main class="container">
         {{{ body }}}
