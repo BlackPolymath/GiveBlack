@@ -4,8 +4,6 @@ const give = require("../models/giveModel");
 const org = require("../models/orgModel");
 // is this needed?
 const UserModel = require("../models/userModel");
-//change the model to UserModelModel
-//change all references relating to queries to UserModelModel
 
 // homepage
 router.get("/", (req, res) => {
@@ -25,7 +23,7 @@ router.post("/signup", (req, res) => {
     email: req.body.email,
     password: req.body.password
   }).then(user => {
-    res.redirect("/");
+    res.redirect("/dashboard/" + user.id);
     // will redirect to user dashboard, use user id
   });
 });
@@ -41,7 +39,7 @@ router.post("/login", (req, res) => {
     email: req.body.email
   }).then(user => {
     // will redirect to user dashboard, use user id
-    res.redirect("/profile/" + user.id);
+    res.redirect("/dashboard/" + user.id);
   });
 });
 
@@ -77,6 +75,14 @@ router.delete("/delete/:id", (req, res) => {
     res.redirect("/");
   });
 });
+
+// get request for user dashboard
+router.get("/dashboard/:id", (req, res) => {
+  res.render("dashboard", { _id: req.params.id });
+  //.then(user => {res.redirect("/");
+});
+
+// best way to pass the user object from login/signup??
 // update UserModel in database
 
 module.exports = router;
