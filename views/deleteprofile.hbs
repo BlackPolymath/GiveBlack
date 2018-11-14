@@ -1,16 +1,18 @@
-<h2>Update your profile to Give Black!</h2>
+<h2>ACCOUNT DELETION</h2>
 
 
 {{#if message}}
 <div class="alert alert-danger">{{message}}</div>
 {{/if}}
 
-<form action="/update/{{this.id}}?_method=put" method="post">
+<form action="/delete/{{this.id}}?_method=delete" method="post">
     <div class="form-group">
-        <label for="firstName">First Name</label>
+        <input type="checkbox" name="delete" value="delete"> Please delete my account<br>
+        {{!-- <label for="firstName">First Name</label>
         <input class="form-control" type="text" name="firstName" id="firstName" value={{this.firstName}}>
+        --}}
     </div>
-    <div class="
+    {{!-- <div class="
             form-group">
         <label for="lastName">Last Name</label>
         <input class="form-control" type="text" name="lastName" id="lastName" value={{this.lastName}}>
@@ -23,9 +25,6 @@
     <div class="form-group">
         <label for="password">Password</label>
         <input class="form-control" type="password" name="password" id="password" value={{this.password}}>
-    </div>
+    </div> --}}
     <input class="btn btn-default" type="submit">
-    <div>
-        <a href="/delete/{{this.id}}">Delete My Account</a>
-    </div>
 </form>

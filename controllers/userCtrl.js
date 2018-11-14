@@ -26,6 +26,7 @@ router.post("/signup", (req, res) => {
     password: req.body.password
   }).then(user => {
     res.redirect("/");
+    // will redirect to user dashboard, use user id
   });
 });
 
@@ -39,54 +40,43 @@ router.post("/login", (req, res) => {
   UserModel.findOne({
     email: req.body.email
   }).then(user => {
-    // res.redirect("/");
+    // will redirect to user dashboard, use user id
     res.redirect("/profile/" + user.id);
   });
 });
 
-// Get specific user profile after log In
+// querying db for user once logged in
 router.get("/profile/:id", (req, res) => {
   UserModel.findOne({ _id: req.params.id }).then(user => {
-    //res.render("showprofile", user);
     res.render("updateprofile", user);
+    // res.render("updateprofile" + user.id, user);
   });
-  //use findone again to get user specific data
-  //consider where the user id comes in  and use the user id in the find one
-  //when you get the users data pass it to the view for profile
-  //work in the profile view to render that data
 });
 
-// update user profile using form
+// update user in db using form
 router.put("/update/:id", (req, res) => {
+  req.body.complete = req.body.complete ? true : false;
   UserModel.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
-  }).then(todo => {
-    res.redirect("/profile/:id" + UserModel.id);
+  }).then(user => {
+    res.redirect("/profile/:id" + user.id);
   });
 });
 
-// Get sign up form
-router.get("/signup", (req, res) => {
-  res.render("signup");
+// get request to delete account
+router.get("/delete/:id", (req, res) => {
+  UserModel.findOne({ _id: req.params.id }).then(user => {
+    res.render("deleteprofile", user);
+    // res.render("updateprofile" + user.id, user);
+  });
 });
 
-// Post profile form
-router.post("/profile/:id", (req, res) => {
-  UserModel.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastname,
-    email: req.body.email,
-    password: req.body.password
-  }).then(user => {
+// delete account
+router.delete("/delete/:id", (req, res) => {
+  UserModel.findOneAndRemove({ _id: req.params.id }).then(() => {
     res.redirect("/");
   });
 });
-
 // update UserModel in database
-
-// router.patch("/profile/:id", (req, res) => {
-// UserModel.findOneAndUpdate({ _id: req.params.id }
-
-// });
 
 module.exports = router;
