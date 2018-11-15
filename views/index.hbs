@@ -18,6 +18,9 @@
 
 
     <div class="homepage">
+        {{#if message}}
+        <div class="alert alert-danger">{{message}}</div>
+        {{/if}}
         <a href="/login">Log In</a>
         <a href="/signup">Sign Up</a>
     </div>

@@ -32,13 +32,18 @@ router.get("/login", (req, res) => {
 });
 
 // Post Login/ existing user
-router.post("/login", (req, res) => {
+router.post("/login", (req, res, err) => {
   UserModel.findOne({
     email: req.body.email
-  }).then(user => {
-    // need catch err to say need to sign up, currently times out
-    res.redirect("/dashboard/" + user.id);
-  });
+  })
+    .then(user => {
+      res.redirect("/dashboard/" + user.id);
+    })
+    .catch(err => {
+      res.render("index", {
+        message: "Account does not exist, please SignUp!"
+      });
+    });
 });
 
 // querying db for user once logged in
@@ -54,7 +59,7 @@ router.put("/update/:id", (req, res) => {
   UserModel.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
   }).then(user => {
-    res.redirect("/profile/:id" + user.id);
+    res.redirect("/profile/" + user.id);
   });
 });
 
