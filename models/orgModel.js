@@ -3,11 +3,10 @@ const mongoose = require("../db/connection");
 
 // should i be requiring the user here?
 const OrgSchema = new mongoose.Schema({
-  org: {
-    name: String,
-    mission: String,
-    url: String
-  }
+  name: String,
+  mission: String,
+  url: String,
+  img: String
 
   // do i need to ref: user here?
 });

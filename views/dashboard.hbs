@@ -1,12 +1,20 @@
-<h1>Dashboard</h1>
+<h1>Welcome to your Dashboard</h1>
+
+<h3>Happy Giving!</h3>
+
+{{#if message}}
+<div class="alert alert-danger">{{message}}</div>
+{{/if}}
 
 <div>
-    <div>{{firstName}}</div>
-    <div>{{lastName}}</div>
+    <a href="/give/{{userId}}/{{org.0.id}}">
+        <img src="{{org.0.img}}" alt="NVRJ" height="250" width="400">
+    </a>
 </div>
 
 <div>
-    <a href="/give/{{this.id}}">
-        <img src="imgs/nvlogo.png" alt="NVRJ" height="42" width="42">
-    </a>
+    <a href="/delete/{{userId}}">Delete My Account</a>
+
+    <a href="/profile/{{userId}}">Update Your Profile</a>
+
 </div>

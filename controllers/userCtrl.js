@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const give = require("../models/giveModel");
 const org = require("../models/orgModel");
-// is this needed?
 const UserModel = require("../models/userModel");
 
 // homepage
@@ -24,7 +23,6 @@ router.post("/signup", (req, res) => {
     password: req.body.password
   }).then(user => {
     res.redirect("/dashboard/" + user.id);
-    // will redirect to user dashboard, use user id
   });
 });
 
@@ -38,7 +36,7 @@ router.post("/login", (req, res) => {
   UserModel.findOne({
     email: req.body.email
   }).then(user => {
-    // will redirect to user dashboard, use user id
+    // need catch err to say need to sign up, currently times out
     res.redirect("/dashboard/" + user.id);
   });
 });
@@ -47,7 +45,6 @@ router.post("/login", (req, res) => {
 router.get("/profile/:id", (req, res) => {
   UserModel.findOne({ _id: req.params.id }).then(user => {
     res.render("updateprofile", user);
-    // res.render("updateprofile" + user.id, user);
   });
 });
 
@@ -63,26 +60,26 @@ router.put("/update/:id", (req, res) => {
 
 // get request to delete account
 router.get("/delete/:id", (req, res) => {
-  UserModel.findOne({ _id: req.params.id }).then(user => {
-    res.render("deleteprofile", user);
-    // res.render("updateprofile" + user.id, user);
-  });
-});
-
-// delete account
-router.delete("/delete/:id", (req, res) => {
   UserModel.findOneAndRemove({ _id: req.params.id }).then(() => {
     res.redirect("/");
   });
 });
 
-// get request for user dashboard
+// Get request for user dashboard
 router.get("/dashboard/:id", (req, res) => {
-  res.render("dashboard", { _id: req.params.id });
-  //.then(user => {res.redirect("/");
+  org.find().then(entity => {
+    res.render("dashboard", { userId: req.params.id, org: entity });
+  });
 });
 
-// best way to pass the user object from login/signup??
-// update UserModel in database
-
+// Flash msg to confirm donation
+router.get("/give/:userId/:orgId", (req, res) => {
+  org.find().then(entity => {
+    res.render("dashboard", {
+      message: "Thanks for Giving!",
+      userId: req.params.userId,
+      org: entity
+    });
+  });
+});
 module.exports = router;
