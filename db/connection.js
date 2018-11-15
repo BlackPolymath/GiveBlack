@@ -17,6 +17,6 @@ mongoose.Promise = Promise;
 
 module.exports = mongoose;
 
-// heroku config:set MLAB_URL=mongodb://christina.thompson:abc123@<ds161856.mlab.com:61856/giveblack
+// heroku config:set MLAB_URL=mongodb://giveblack:abc123@ds161856.mlab.com:61856/giveblack
 
 // mongodb://<dbuser>:<dbpassword>@ds161856.mlab.com:61856/giveblack
