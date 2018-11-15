@@ -1,13 +1,13 @@
 <h1> <a href="/">Welcome to your Dashboard</a></h1>
 
-<h3>Select your favorite Organization to begin Giving!</h3>
+<h5>Select your favorite Organization to begin Giving!</h5>
 
 {{#if message}}
 <div class="alert alert-danger">{{message}}</div>
 {{/if}}
 
 <div>
-    <span>{{org.0.name}}</span><br>
+    <h3> <span>{{org.0.name}}</span><br></h3>
     <span>{{org.0.mission}}</span>
     <a href="/give/{{userId}}/{{org.0.id}}">
         <img src="{{org.0.img}}" alt="NVRJ" height="300" width="500">
