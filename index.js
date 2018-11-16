@@ -14,12 +14,12 @@ app.set("view engine", "hbs");
 app.use("/", userCtrl);
 app.use("/imgs", express.static("public"));
 
-// app.listen(2000, () => {
-//   console.log("app listening on port 2000");
-// });
-
-app.set("port", process.env.PORT || 3001);
-
-app.listen(app.get("port"), () => {
-  console.log(`✅ PORT: ${app.get("port")} 🌟`);
+app.listen(2000, () => {
+  console.log("app listening on port 2000");
 });
+
+// app.set("port", process.env.PORT || 3001);
+
+// app.listen(app.get("port"), () => {
+//   console.log(`✅ PORT: ${app.get("port")} 🌟`);
+// });
