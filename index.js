@@ -12,7 +12,7 @@ app.use(parser.urlencoded({ extended: true }));
 app.set("view engine", "hbs");
 
 app.use("/", userCtrl);
-app.use("/imgs", express.static("imgs"));
+app.use("/imgs", express.static("public"));
 
 // app.listen(2000, () => {
 //   console.log("app listening on port 2000");

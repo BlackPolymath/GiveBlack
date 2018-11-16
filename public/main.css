@@ -1,0 +1,32 @@
+html {
+  /* background-color: burlywood; */
+  background-image: url(./imgs/indexphoto.jpg);
+  background-size: cover;
+}
+
+a {
+  color: black;
+}
+
+.enter {
+  color: yellowgreen;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  /* border: 3px solid white; */
+  justify-content: space-around;
+  font-size: 25px;
+}
+
+.form-group {
+  padding: 10px;
+  font-weight: bold;
+  padding-right: 10px;
+}
+.cute {
+  color: black;
+}

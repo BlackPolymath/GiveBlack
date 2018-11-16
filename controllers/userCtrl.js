@@ -70,7 +70,7 @@ router.get("/delete/:id", (req, res) => {
   });
 });
 
-// Get request for user dashboard
+// Get request for user dashboard & orgModel
 router.get("/dashboard/:id", (req, res) => {
   org.find().then(entity => {
     res.render("dashboard", { userId: req.params.id, org: entity });

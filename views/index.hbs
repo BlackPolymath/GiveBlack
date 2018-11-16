@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>GiveBlack</title>
-</head>
-
-<body>
-
-    {{!-- would like to add cover photo --}}
-    <div class="navbar">
-        <a href="/">GiveBlack</a>
+<div class="homepage">
+    {{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+    {{/if}}
+    <div class="container">
+        <a class="enter" href="/login">Log In</a>
+        <a class="enter" href="/signup">Sign Up</a>
     </div>
-
-
-    <div class="homepage">
-        {{#if message}}
-        <div class="alert alert-danger">{{message}}</div>
-        {{/if}}
-        <a href="/login">Log In</a>
-        <a href="/signup">Sign Up</a>
-    </div>
-
-    <main class="container">
-        {{{ body }}}
-    </main>
-</body>
-
-</html>
+</div>
