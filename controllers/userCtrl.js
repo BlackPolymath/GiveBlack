@@ -72,7 +72,7 @@ router.get("/delete/:id", (req, res) => {
 
 // Get request for user dashboard & orgModel
 router.get("/dashboard/:id", (req, res) => {
-  org.find().then(entity => {
+  org.find({ creator: req.params.id }).then(entity => {
     res.render("dashboard", { userId: req.params.id, org: entity });
   });
 });
@@ -99,12 +99,15 @@ router.post("/new/:id", (req, res) => {
     .create({
       name: req.body.name,
       mission: req.body.mission,
+      creator: req.params.id,
       url: req.body.url
     })
     .then(entity => {
       UserModel.findOne({ _id: req.params.id }).then(user => {
-        user.Org.push(entity);
-        res.redirect("/dashboard/" + user.id);
+        user.orgs.push(entity);
+        user.save(err => {
+          res.redirect("/dashboard/" + user.id);
+        });
       });
     });
 });
