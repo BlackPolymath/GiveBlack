@@ -87,4 +87,9 @@ router.get("/give/:userId/:orgId", (req, res) => {
     });
   });
 });
+// GET request for new Org Form
+router.get("/new", (req, res) => {
+  res.render("new");
+});
+
 module.exports = router;
