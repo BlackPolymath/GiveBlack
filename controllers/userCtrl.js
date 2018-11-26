@@ -87,9 +87,39 @@ router.get("/give/:userId/:orgId", (req, res) => {
     });
   });
 });
+
 // GET request for new Org Form
-router.get("/new", (req, res) => {
-  res.render("new");
+router.get("/new/:id", (req, res) => {
+  res.render("new", { userId: req.params.id });
 });
 
+// POST req for new org added to db
+router.post("/new/:id", (req, res) => {
+  org
+    .create({
+      name: req.body.name,
+      mission: req.body.mission,
+      url: req.body.url
+    })
+    .then(entity => {
+      UserModel.findOne({ _id: req.params.id }).then(user => {
+        user.Org.push(entity);
+        res.redirect("/dashboard/" + user.id);
+      });
+    });
+});
+
+// create: (req, res) => {
+//   Tweet.create({
+//     content: req.body.tweet.content,
+//     author: req.body.author
+//   }).then(tweet => {
+//     User.findOne({ _id: req.body.author }).then(user => {
+//       user.tweets.push(tweet);
+//       user.save(err => {
+//         res.redirect(`/tweet/${tweet._id}`);
+//       });
+//     });
+//   });
+// },
 module.exports = router;
