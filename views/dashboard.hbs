@@ -1,5 +1,10 @@
 <h1> Welcome to your Dashboard</h1>
 
+
+{{#if alert}}
+<div class="alert alert-danger chair">{{alert}}</div>
+{{/if}}
+
 <h5>Add your favorite Organization to begin Giving!</h5>
 
 <div>
@@ -18,12 +23,12 @@
 
 {{#each org}}
 <div class="test">
-    <a>
-        <p>{{this.name}}</p>
-        <p>{{this.mission}}</p>
-        <p>{{this.url}}</p>
-        <button onClick={{this.give}}>Give</button>
 
-    </a>
+    <p>{{this.name}}</p>
+    <p>{{this.mission}}</p>
+    <p>{{this.url}}</p>
+    <a href="/give/{{this.creator}}"><button>Give</button> </a>
+
+
 </div>
 {{/each}}

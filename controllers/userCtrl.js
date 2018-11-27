@@ -70,13 +70,6 @@ router.get("/delete/:id", (req, res) => {
   });
 });
 
-// get request to delete org
-router.get("/delete/:id", (req, res) => {
-  orgModel.findOneAndRemove({ _id: req.params.id }).then(() => {
-    res.redirect("dashboard");
-  });
-});
-
 // Get request for user dashboard & orgModel
 router.get("/dashboard/:id", (req, res) => {
   org.find({ creator: req.params.id }).then(entity => {
@@ -89,7 +82,7 @@ router.get("/give/:userId/:orgId", (req, res) => {
   UserModel.findOne({ _id: req.params.userId }).then(user => {
     org.find({ creator: user.id }).then(entity => {
       res.render("dashboard", {
-        message: "Thanks for Giving!",
+        alert: "Thanks for Giving!",
         userId: req.params.userId,
         org: entity
       });
@@ -119,6 +112,24 @@ router.post("/new/:id", (req, res) => {
         });
       });
     });
+});
+
+// GET req for Give Form
+router.get("/give/:id", (req, res) => {
+  res.render("give", { userId: req.params.id });
+});
+
+// // POST Give Form
+router.post("/give/:id", (req, res, err) => {
+  give.create({ amount: req.body.amount }).then(donation => {
+    org.find({ creator: req.params.id }).then(entity => {
+      res.render("dashboard", {
+        userId: req.params.id,
+        org: entity,
+        alert: "Thanks for Giving!"
+      });
+    });
+  });
 });
 
 module.exports = router;

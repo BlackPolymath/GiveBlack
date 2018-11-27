@@ -13,6 +13,6 @@ const GiveSchema = new mongoose.Schema({
     ref: "Org"
     // ref means reference another model. In this case it's called Org
   },
-  amount: Number
+  amount: String
 });
 module.exports = mongoose.model("Give", GiveSchema);
