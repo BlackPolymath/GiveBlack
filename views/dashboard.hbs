@@ -2,40 +2,28 @@
 
 <h5>Add your favorite Organization to begin Giving!</h5>
 
+<div>
+    <ul>
+        <li><a href="/new/{{userId}}">Add an Organization</a></li>
+
+        <li><a href="/delete/{{userId}}">Delete Your Account</a></li>
+
+        <li> <a href="/profile/{{userId}}">Update Your Profile</a></li>
+    </ul>
+</div>
+
 {{#if message}}
 <div class="alert alert-danger">{{message}}</div>
 {{/if}}
 
 {{#each org}}
 <div class="test">
-    <p>{{this.name}}</p>
-    <p>{{this.mission}}</p>
-    <p>{{this.url}}</p>
+    <a>
+        <p>{{this.name}}</p>
+        <p>{{this.mission}}</p>
+        <p>{{this.url}}</p>
+        <button onClick={{this.give}}>Give</button>
+
+    </a>
 </div>
 {{/each}}
-
-{{!-- <div class="test">
-    <h3> <span class="cute">{{org.0.name}}</span><br></h3>
-    <span>{{org.0.mission}}</span>
-    <a href="/give/{{userId}}/{{org.0.id}}">
-        <img src="{{org.0.img}}" alt="ORG">
-    </a>
-</div> --}}
-{{!-- <div>
-    <h3> <span class="cute">{{org.1.name}}</span><br></h3>
-    <span>{{org.1.mission}}</span>
-    <a href="/give/{{userId}}/{{org.1.id}}">
-        <img src="{{org.1.img}}" alt="ORG">
-    </a>
-</div> --}}
-
-<div>
-    <a href="/new/{{userId}}">Add an Organization!</a>
-
-    <a href="/delete/{{userId}}">Delete an Organization</a>
-
-    <a href="/delete/{{userId}}">Delete Your Account</a>
-
-    <a href="/profile/{{userId}}">Update Your Profile</a>
-
-</div>

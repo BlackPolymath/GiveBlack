@@ -2,8 +2,6 @@
 const mongoose = require("../db/connection");
 const Schema = mongoose.Schema;
 
-// should i be requiring the user here?
-// what else can i include here for payment type?
 const GiveSchema = new mongoose.Schema({
   user: {
     type: Schema.Types.ObjectId,

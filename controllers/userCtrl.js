@@ -84,7 +84,7 @@ router.get("/dashboard/:id", (req, res) => {
   });
 });
 
-// Flash msg to confirm donation
+// Finds User by ID, then Org, pushes to dashboard
 router.get("/give/:userId/:orgId", (req, res) => {
   UserModel.findOne({ _id: req.params.userId }).then(user => {
     org.find({ creator: user.id }).then(entity => {
@@ -121,17 +121,4 @@ router.post("/new/:id", (req, res) => {
     });
 });
 
-// create: (req, res) => {
-//   Tweet.create({
-//     content: req.body.tweet.content,
-//     author: req.body.author
-//   }).then(tweet => {
-//     User.findOne({ _id: req.body.author }).then(user => {
-//       user.tweets.push(tweet);
-//       user.save(err => {
-//         res.redirect(`/tweet/${tweet._id}`);
-//       });
-//     });
-//   });
-// },
 module.exports = router;
