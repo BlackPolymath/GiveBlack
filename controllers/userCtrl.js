@@ -70,6 +70,13 @@ router.get("/delete/:id", (req, res) => {
   });
 });
 
+// get request to delete org
+router.get("/delete/:id", (req, res) => {
+  orgModel.findOneAndRemove({ _id: req.params.id }).then(() => {
+    res.redirect("dashboard");
+  });
+});
+
 // Get request for user dashboard & orgModel
 router.get("/dashboard/:id", (req, res) => {
   org.find({ creator: req.params.id }).then(entity => {
@@ -79,11 +86,13 @@ router.get("/dashboard/:id", (req, res) => {
 
 // Flash msg to confirm donation
 router.get("/give/:userId/:orgId", (req, res) => {
-  org.find().then(entity => {
-    res.render("dashboard", {
-      message: "Thanks for Giving!",
-      userId: req.params.userId,
-      org: entity
+  UserModel.findOne({ _id: req.params.userId }).then(user => {
+    org.find({ creator: user.id }).then(entity => {
+      res.render("dashboard", {
+        message: "Thanks for Giving!",
+        userId: req.params.userId,
+        org: entity
+      });
     });
   });
 });

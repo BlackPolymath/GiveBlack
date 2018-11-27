@@ -1,18 +1,26 @@
 <h1> Welcome to your Dashboard</h1>
 
-<h5>Select your favorite Organization to begin Giving!</h5>
+<h5>Add your favorite Organization to begin Giving!</h5>
 
 {{#if message}}
 <div class="alert alert-danger">{{message}}</div>
 {{/if}}
 
-<div>
+{{#each org}}
+<div class="test">
+    <p>{{this.name}}</p>
+    <p>{{this.mission}}</p>
+    <p>{{this.url}}</p>
+</div>
+{{/each}}
+
+{{!-- <div class="test">
     <h3> <span class="cute">{{org.0.name}}</span><br></h3>
     <span>{{org.0.mission}}</span>
     <a href="/give/{{userId}}/{{org.0.id}}">
         <img src="{{org.0.img}}" alt="ORG">
     </a>
-</div>
+</div> --}}
 {{!-- <div>
     <h3> <span class="cute">{{org.1.name}}</span><br></h3>
     <span>{{org.1.mission}}</span>
@@ -23,6 +31,8 @@
 
 <div>
     <a href="/new/{{userId}}">Add an Organization!</a>
+
+    <a href="/delete/{{userId}}">Delete an Organization</a>
 
     <a href="/delete/{{userId}}">Delete Your Account</a>
 
